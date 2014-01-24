@@ -14,4 +14,4 @@ define('DATABASE_NAME', 'mydatabase');
  * DON'T TOUCH ABOVE *
  ******************* */
 define('APP_DIR_PATH', dirname(__FILE__) . '/backups/');
-define('APP_DOMAIN', str_replace('www.', '', $_SERVER['HTTP_HOST']););
+define('APP_DOMAIN', str_replace('www.', '', $_SERVER['HTTP_HOST']));

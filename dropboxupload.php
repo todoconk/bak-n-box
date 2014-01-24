@@ -1,11 +1,11 @@
 <?php
-require_once dirname(__FILE__). "dropbox/DropboxClient.php";
+require_once dirname(__FILE__). "/dropbox/DropboxClient.php";
 $dropbox = new DropboxClient(
-    array(
-      'app_key' => DROPBOX_APP_KEY,
-      'app_secret' => DROPBOX_APP_SECRET,
-      'app_full_access' => false,
-      ),'en');
+  array(
+    'app_key' => DROPBOX_APP_KEY,
+    'app_secret' => DROPBOX_APP_SECRET,
+    'app_full_access' => false,
+    ),'en');
 handle_dropbox_auth($dropbox); // see below
 
 /*
@@ -48,7 +48,7 @@ function handle_dropbox_auth($dropbox){
   $access_token = load_token("access");
   if(!empty($access_token)) {
     $dropbox->SetAccessToken($access_token);
-}
+  }
   elseif(!empty($_GET['auth_callback'])) // are we coming from dropbox's oauth page?
   {
     // then load our previosly created request token
@@ -58,15 +58,15 @@ function handle_dropbox_auth($dropbox){
     $access_token = $dropbox->GetAccessToken($request_token);
     store_token($access_token, "access");
     delete_token($_GET['oauth_token']);
-}
+  }
     // checks if access token is required
-if(!$dropbox->IsAuthorized()){
+  if(!$dropbox->IsAuthorized()){
     $return_url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']."?auth_callback=1";
     $auth_url = $dropbox->BuildAuthorizeUrl($return_url);
     $request_token = $dropbox->GetRequestToken();
     store_token($request_token, $request_token['t']);
-    die("Authentication required".$auth_url);
-}
+    die("Authentication required: ".$auth_url);
+  }
 }
 
 ?>

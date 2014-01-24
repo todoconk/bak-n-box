@@ -44,6 +44,22 @@ define('DATABASE_USER', 'user');
 define('DATABASE_PASSWORD', 'password');
 define('DATABASE_NAME', 'mydatabase');
 ```
+* Run manually the first time
+```bash
+http://yourhost.com/bak-n-box/init.php
+```
+* When you run the first time, you will get an URL to authorize your app
+```bash
+https://www.dropbox.com/1/oauth/authorize?oauth_token=aOSbuvU7aPGjvdml&oauth_callback=http%3A%2F%2Fyourhost.com%2Fbak-n-box%2Finit.php%3Fauth_callback%3D1
+```
+* Authorize your app
+
+* Run again
+```bash
+http://yourhost.com/bak-n-box/init.php
+```
+* That's all 
+
 
 ### Configure your Cron Job
 

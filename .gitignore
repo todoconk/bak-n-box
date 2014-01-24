@@ -1,0 +1,3 @@
+/backups/*.sql
+config.php
+/tokens/*.token

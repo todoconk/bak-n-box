@@ -1,7 +1,6 @@
 <?php
 /** 
  * DropPHP - A simple Dropbox client that works without cURL.
-
  */
  
 require_once("OAuthSimple.php");

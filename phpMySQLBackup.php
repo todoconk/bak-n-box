@@ -42,7 +42,7 @@ function backup_tables($host, $user, $pass, $name, $tables = '*'){
         $return.="\n\n\n";
     }
 
-    $filename = 'bak-'.date("Y.m.d-H.i.s", time()).'.sql';
+    $filename = $name . '-' . date("Y.m.d-H.i.s", time()).'.sql';
     $handle = fopen(APP_DIR_PATH . $filename,'w+');
     fwrite($handle, $return);
     fclose($handle);

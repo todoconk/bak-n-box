@@ -25,8 +25,14 @@ if(empty($_FILES['the_upload'])) {
 }
 */
 
-function upload_dropbox($dropbox, $file, $upload_name){
-  return $result = $dropbox->UploadFile($file, $upload_name);
+function upload_dropbox($dropbox, $file, $upload_name, $delete_local = DELETE_LOCAL){
+  $result = $dropbox->UploadFile($file, $upload_name);
+
+  if($delete_local){
+    @unlink($file);
+  }
+
+  return $result;
 }
 
 function store_token($token, $name){
